@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glassy Editor</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-bg"></div>
+  <header class="editor-header d-flex flex-column align-items-center py-4 mb-3" data-aos="fade-down">
+    <div class="editor-logo mb-2"><i class="bi bi-pencil-fill"></i></div>
+    <h1 class="editor-title mb-1">Glassy Editor</h1>
+    <p class="editor-desc text-center">یک ویرایشگر متن فوق‌حرفه‌ای با امکانات کامل و طراحی مدرن</p>
+  </header>
+  <div class="container py-3">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div></div>
+      <button id="themeToggle" class="btn btn-glass ms-2" title="تغییر تم"><i class="bi bi-moon-stars"></i></button>
+    </div>
+    <div id="alerts"></div>
+    <div class="glass-panel p-4 mb-3" data-aos="fade-up">
+      <div class="toolbar mb-3 d-flex flex-wrap gap-2 justify-content-center" data-aos="fade-down" data-aos-delay="200">
+        <input type="color" id="colorPicker" title="تغییر رنگ متن" class="form-control form-control-color" value="#222222">
+        <select id="fontSelect" class="form-select w-auto">
+          <option value="Vazirmatn">وزیرمتن</option>
+          <option value="Tahoma">Tahoma</option>
+          <option value="Arial">Arial</option>
+          <option value="Courier New">Courier New</option>
+        </select>
+        <button class="btn btn-outline-primary" id="increaseFont" title="بزرگ‌تر کردن متن"><b>+</b></button>
+        <button class="btn btn-outline-primary" id="decreaseFont" title="کوچک‌تر کردن متن"><b>-</b></button>
+        <button class="btn btn-outline-success" id="addImage" title="افزودن عکس"><i class="bi bi-image"></i></button>
+        <button class="btn btn-outline-warning" id="boldText" title="بولد"><b>B</b></button>
+        <button class="btn btn-outline-info" id="italicText" title="ایتالیک"><i>I</i></button>
+        <button class="btn btn-outline-secondary" id="ulList" title="لیست بولت‌دار"><i class="bi bi-list-ul"></i></button>
+        <button class="btn btn-outline-secondary" id="olList" title="لیست شماره‌دار"><i class="bi bi-list-ol"></i></button>
+        <button class="btn btn-outline-secondary" id="addLink" title="افزودن لینک"><i class="bi bi-link-45deg"></i></button>
+        <button class="btn btn-outline-secondary" id="undoBtn" title="Undo"><i class="bi bi-arrow-counterclockwise"></i></button>
+        <button class="btn btn-outline-secondary" id="redoBtn" title="Redo"><i class="bi bi-arrow-clockwise"></i></button>
+        <button class="btn btn-outline-secondary" id="alignRight" title="راست‌چین"><i class="bi bi-align-end"></i></button>
+        <button class="btn btn-outline-secondary" id="alignCenter" title="وسط‌چین"><i class="bi bi-align-center"></i></button>
+        <button class="btn btn-outline-secondary" id="alignLeft" title="چپ‌چین"><i class="bi bi-align-start"></i></button>
+        <button class="btn btn-outline-secondary" id="highlightText" title="هایلایت"><i class="bi bi-highlighter"></i></button>
+        <button class="btn btn-outline-secondary" id="addTable" title="افزودن جدول"><i class="bi bi-table"></i></button>
+        <button class="btn btn-outline-secondary" id="addVideo" title="افزودن ویدیو"><i class="bi bi-camera-video"></i></button>
+        <button class="btn btn-outline-secondary" id="fullscreenBtn" title="تمام‌صفحه"><i class="bi bi-arrows-fullscreen"></i></button>
+        <button class="btn btn-outline-secondary" id="previewBtn" title="پیش‌نمایش"><i class="bi bi-eye"></i></button>
+        <button class="btn btn-outline-secondary" id="saveToFile" title="ذخیره به فایل"><i class="bi bi-download"></i></button>
+        <button class="btn btn-outline-secondary" id="loadFromFile" title="بارگذاری فایل"><i class="bi bi-upload"></i></button>
+        <button class="btn btn-outline-secondary" id="saveToLocal" title="ذخیره محلی"><i class="bi bi-save"></i></button>
+        <button class="btn btn-outline-secondary" id="loadFromLocal" title="بارگذاری محلی"><i class="bi bi-folder2-open"></i></button>
+      </div>
+      <div id="editor" class="editor-area" contenteditable="true" spellcheck="true" data-placeholder="اینجا بنویس..." data-aos="zoom-in" data-aos-delay="400"></div>
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <div id="wordCount" class="text-muted small"></div>
+        <button class="btn btn-outline-info btn-sm" id="toggleMarkdown">Markdown</button>
+      </div>
+      <div id="previewPanel" class="glass-panel p-3 mt-3 d-none"></div>
+    </div>
+    <button class="btn btn-glass w-100 mt-3" id="saveBtn" data-aos="fade-up" data-aos-delay="600">ذخیره پست</button>
+  </div>
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- anime.js -->
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Custom JS -->
+  <script src="main.js"></script>
+  <script>AOS.init();</script>
+</body>
+</html> 

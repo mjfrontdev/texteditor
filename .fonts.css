@@ -1,0 +1,5 @@
+@import url('https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css');
+
+body, #editor-title, #editor, .form-select, #previewPanel, #wordCount {
+  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif !important;
+} 

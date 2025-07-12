@@ -1,0 +1,389 @@
+body {
+  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  min-height: 100vh;
+  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+  direction: rtl;
+}
+
+/* پس‌زمینه گرادینت چندلایه */
+.main-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 60%, #a5b4fc 100%);
+  animation: bgMove 12s linear infinite alternate;
+}
+@keyframes bgMove {
+  0% { filter: hue-rotate(0deg) blur(0px); }
+  100% { filter: hue-rotate(20deg) blur(2px); }
+}
+body.dark-theme .main-bg {
+  background: linear-gradient(120deg, #232946 0%, #16161a 60%, #6366f1 100%);
+}
+
+/* هدر جذاب */
+.editor-header {
+  background: rgba(255,255,255,0.22);
+  border-radius: 32px;
+  box-shadow: 0 8px 32px 0 rgba(99,102,241,0.10);
+  margin: 0 auto 2rem auto;
+  max-width: 520px;
+  position: relative;
+  overflow: hidden;
+  border: 1.5px solid #e0e7ff;
+  backdrop-filter: blur(10px);
+}
+body.dark-theme .editor-header {
+  background: rgba(35,41,70,0.55);
+  border: 1.5px solid #6366f1;
+}
+.editor-logo {
+  font-size: 2.7rem;
+  color: #6366f1;
+  background: rgba(99,102,241,0.10);
+  border-radius: 50%;
+  padding: 0.7rem 1.1rem;
+  box-shadow: 0 2px 12px 0 rgba(99,102,241,0.13);
+  margin-bottom: 0.5rem;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.editor-logo:hover {
+  box-shadow: 0 6px 24px 0 rgba(99,102,241,0.22);
+  background: #6366f1;
+  color: #fff;
+}
+.editor-title {
+  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #6366f1;
+  text-shadow: 0 2px 8px rgba(99, 102, 241, 0.10);
+  font-size: 2.1rem;
+}
+body.dark-theme .editor-title {
+  color: #a5b4fc;
+  text-shadow: 0 2px 8px rgba(99, 102, 241, 0.18);
+}
+.editor-desc {
+  color: #818cf8;
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+}
+body.dark-theme .editor-desc {
+  color: #a5b4fc;
+}
+
+/* نوار ابزار مدرن */
+.toolbar {
+  background: rgba(255,255,255,0.18);
+  border-radius: 18px;
+  box-shadow: 0 2px 12px 0 rgba(99,102,241,0.10);
+  padding: 0.7rem 0.5rem;
+  margin-bottom: 1.2rem !important;
+  border: 1.5px solid #e0e7ff;
+  overflow-x: auto;
+}
+body.dark-theme .toolbar {
+  background: rgba(35,41,70,0.22);
+  border: 1.5px solid #6366f1;
+}
+.toolbar .btn {
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 2px 12px 0 rgba(99, 102, 241, 0.13), 0 1.5px 0 #fff inset;
+  background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(99,102,241,0.08) 100%);
+  border: 1.5px solid #e0e7ff;
+  color: #6366f1;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s, color 0.18s, filter 0.18s;
+  letter-spacing: 0.5px;
+  font-size: 1.1rem;
+  padding: 0.55rem 1.1rem;
+  margin-bottom: 0.2rem;
+  filter: drop-shadow(0 2px 8px rgba(99,102,241,0.08));
+}
+.toolbar .btn:hover {
+  transform: scale(1.16) rotate(-3deg);
+  box-shadow: 0 6px 24px 0 rgba(99, 102, 241, 0.22);
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  color: #fff;
+  filter: drop-shadow(0 6px 24px rgba(99,102,241,0.18));
+}
+body.dark-theme .toolbar .btn {
+  background: linear-gradient(135deg, rgba(99,102,241,0.22) 0%, rgba(35,41,70,0.55) 100%);
+  color: #a5b4fc;
+  border: 1.5px solid #6366f1;
+}
+body.dark-theme .toolbar .btn:hover {
+  background: linear-gradient(135deg, #6366f1 0%, #232946 100%);
+  color: #fff;
+}
+
+/* دکمه تغییر تم */
+#themeToggle {
+  font-size: 1.3rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px 0 rgba(99, 102, 241, 0.13);
+  background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(99,102,241,0.08) 100%);
+  color: #6366f1;
+  border: 1.5px solid #e0e7ff;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+#themeToggle:hover {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  color: #fff;
+  box-shadow: 0 6px 24px 0 rgba(99, 102, 241, 0.22);
+}
+
+/* ادیتور شیشه‌ای چندلایه */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.13);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-radius: 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  transition: box-shadow 0.3s, background 0.3s;
+  position: relative;
+}
+.glass-panel:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: linear-gradient(120deg, rgba(99,102,241,0.08) 0%, rgba(255,255,255,0.08) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+.glass-panel > * { position: relative; z-index: 1; }
+.glass-panel:hover {
+  box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.22);
+  background: rgba(255,255,255,0.45);
+}
+body.dark-theme .glass-panel {
+  background: rgba(35, 41, 70, 0.45);
+  box-shadow: 0 8px 32px 0 rgba(35, 41, 70, 0.28);
+  border: 1.5px solid rgba(99, 102, 241, 0.25);
+}
+body.dark-theme .glass-panel:before {
+  background: linear-gradient(120deg, rgba(99,102,241,0.18) 0%, rgba(35,41,70,0.18) 100%);
+}
+
+/* ادیتور */
+#editor {
+  min-height: 260px;
+  background: rgba(255,255,255,0.65);
+  border-radius: 22px;
+  border: 1.5px solid #e0e7ff;
+  padding: 26px;
+  font-size: 1.22rem;
+  outline: none;
+  transition: box-shadow 0.22s, border 0.22s, background 0.22s;
+  box-shadow: 0 4px 18px 0 rgba(99, 102, 241, 0.13);
+  margin-bottom: 0.5rem;
+  color: #232946;
+  font-family: inherit;
+}
+#editor:focus {
+  border: 1.5px solid #6366f1;
+  box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.18);
+  background: rgba(255,255,255,0.85);
+}
+body.dark-theme #editor {
+  background: rgba(35, 41, 70, 0.75);
+  color: #f4f4f4;
+  border: 1.5px solid #6366f1;
+  box-shadow: 0 4px 18px 0 rgba(99, 102, 241, 0.22);
+}
+body.dark-theme #editor:focus {
+  background: rgba(35, 41, 70, 0.92);
+}
+#editor:empty:before {
+  content: attr(data-placeholder);
+  color: #b0b3b8;
+  pointer-events: none;
+}
+
+/* شمارنده و پیش‌نمایش کارت مدرن */
+#wordCount, #previewPanel {
+  box-shadow: 0 2px 12px 0 rgba(99,102,241,0.10);
+  border-radius: 16px;
+  border: 1.5px solid #e0e7ff;
+  background: rgba(255,255,255,0.55);
+  padding: 0.4rem 1.2rem;
+  margin: 0.5rem 0;
+}
+body.dark-theme #wordCount, body.dark-theme #previewPanel {
+  background: rgba(35,41,70,0.85);
+  color: #a5b4fc;
+  border: 1.5px solid #6366f1;
+}
+
+/* دکمه ذخیره پست */
+.btn-glass {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  box-shadow: 0 2px 12px 0 rgba(99, 102, 241, 0.13);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  padding: 0.9rem 0;
+  margin-top: 1.2rem;
+  letter-spacing: 0.5px;
+}
+.btn-glass:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+  color: #fff;
+  box-shadow: 0 6px 24px 0 rgba(99, 102, 241, 0.22);
+}
+body.dark-theme .btn-glass {
+  background: linear-gradient(135deg, #232946 0%, #6366f1 100%);
+  color: #fff;
+}
+body.dark-theme .btn-glass:hover {
+  background: linear-gradient(135deg, #6366f1 0%, #232946 100%);
+}
+
+/* دکمه‌های ابزار با افکت حرفه‌ای */
+.toolbar .btn-outline-secondary {
+  background: rgba(255,255,255,0.5);
+  color: #6366f1;
+  border: 1.5px solid #e0e7ff;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.toolbar .btn-outline-secondary:hover {
+  background: #6366f1;
+  color: #fff;
+  box-shadow: 0 4px 16px 0 rgba(99, 102, 241, 0.18);
+}
+body.dark-theme .toolbar .btn-outline-secondary {
+  background: rgba(99,102,241,0.22);
+  color: #a5b4fc;
+  border: 1.5px solid #6366f1;
+}
+body.dark-theme .toolbar .btn-outline-secondary:hover {
+  background: #232946;
+  color: #fff;
+}
+
+/* حالت تمام‌صفحه */
+.fullscreen-editor {
+  position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 99999;
+  background: rgba(35,41,70,0.98);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 2vw !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: auto;
+  transition: background 0.3s;
+}
+body.dark-theme .fullscreen-editor {
+  background: rgba(20,20,30,0.98);
+}
+
+/* جدول */
+.editor-area table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+}
+.editor-area th, .editor-area td {
+  border: 1px solid #6366f1;
+  padding: 0.5rem 0.7rem;
+  text-align: center;
+  background: rgba(99,102,241,0.06);
+}
+body.dark-theme .editor-area th, body.dark-theme .editor-area td {
+  background: rgba(99,102,241,0.18);
+  color: #fff;
+  border: 1px solid #a5b4fc;
+}
+
+/* ویدیو */
+.editor-area video {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 0.5rem 0;
+  box-shadow: 0 2px 8px 0 rgba(99,102,241,0.13);
+}
+
+/* Toast حرفه‌ای */
+.custom-toast {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  z-index: 9999;
+  min-width: 220px;
+  max-width: 320px;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.7);
+  color: #222;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(99,102,241,0.18);
+  border: 1.5px solid #e0e7ff;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.08rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(-30px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.35s, transform 0.35s;
+  backdrop-filter: blur(8px);
+}
+.custom-toast.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.custom-toast .toast-icon {
+  font-size: 1.3rem;
+  margin-left: 0.5rem;
+}
+.custom-toast.toast-success { border-left: 5px solid #22c55e; }
+.custom-toast.toast-danger { border-left: 5px solid #ef4444; }
+.custom-toast.toast-warning { border-left: 5px solid #f59e42; }
+.custom-toast.toast-info { border-left: 5px solid #3b82f6; }
+.custom-toast.toast-primary { border-left: 5px solid #6366f1; }
+body.dark-theme .custom-toast {
+  background: rgba(35, 41, 70, 0.85);
+  color: #f4f4f4;
+  border: 1.5px solid #6366f1;
+  box-shadow: 0 4px 24px 0 rgba(99,102,241,0.28);
+}
+body.dark-theme .custom-toast .toast-icon {
+  color: #a5b4fc;
+}
+
+/* پیش‌نمایش */
+#previewPanel {
+  min-height: 120px;
+  background: rgba(255,255,255,0.65);
+  border-radius: 18px;
+  border: 1.5px solid #e0e7ff;
+  box-shadow: 0 2px 12px 0 rgba(99, 102, 241, 0.10);
+  color: #232946;
+  font-size: 1.08rem;
+  transition: background 0.2s, color 0.2s;
+}
+body.dark-theme #previewPanel {
+  background: rgba(35,41,70,0.85);
+  color: #f4f4f4;
+  border: 1.5px solid #6366f1;
+}
+
+/* ریسپانسیو */
+@media (max-width: 600px) {
+  .main-bg { background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 60%, #a5b4fc 100%); }
+  .editor-header { max-width: 98vw; padding: 1.2rem 0.5rem; }
+  .glass-panel { padding: 1rem !important; border-radius: 16px; }
+  #editor { padding: 10px; font-size: 1rem; border-radius: 12px; }
+  .toolbar { gap: 0.3rem !important; padding: 0.4rem 0.2rem; border-radius: 10px; }
+  .btn-glass { font-size: 1rem; border-radius: 12px; padding: 0.7rem 0; }
+  #wordCount, #previewPanel { padding: 0.3rem 0.5rem; border-radius: 10px; }
+} 
